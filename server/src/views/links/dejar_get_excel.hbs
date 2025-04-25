@@ -1,0 +1,52 @@
+<div class="container p-1">
+    <div class="col" align="center">
+        <h1>Facturas de la Unidad:  {{user.fullname}}</h1>
+    </div>
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-12 mx-auto">
+          <div class="card text-center">
+             <div class="card-body">  
+    
+       <table class="table table-hover table-striped table-secondary text-center" width="100%">
+         <thead class="bg-dark text-white">
+         <tr>    
+           <th width="10%">Orden</th>
+           <th width="20%">Servicio</th>
+           <th width="50%">Facturas</th>
+           <th width="10%">Horas</th>
+           <th width="10%">Precio</th>
+            <th>Descargar</th>
+         </tr>
+        </thead> 
+         {{#each ficheros_excel }} 
+           <tr>
+             <td>
+               <input type="text" class="form-control" value="{{id_orden}}">
+             </td>
+             <td>
+               <textarea class="form-control-especial">{{servicio}}</textarea>
+             </td>
+             <td>
+                 <input type="text" class="form-control" value="{{fileName}}">
+             </td>
+             <td>
+                 <input type="text" class="form-control" value="{{horas}}">
+             </td>
+             <td>
+                 <input type="text" class="form-control" value="{{precio}}">
+             </td>
+              <td>
+                <div align="center"><a class="form-control" href="/links/descargar_excel/{{fileName}}">Descargar</a>
+                </div>
+              </td>
+           </tr>
+          {{/each }} 
+
+       </table>
+      </div>
+      </div>
+      </div>
+      </div>
+    </div>
+</div>  

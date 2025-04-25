@@ -1,0 +1,286 @@
+SELECT rp.id,  rp.permission_id,rp.role_id,r.description,r.name,pe.mod_name
+FROM `role_permissions` rp 
+inner join roles r on rp.role_id = r.id
+inner join permissions pe on pe.id = rp.permission_id;
+
+*******
+
+Ejemplo de Componente de Login (LoginHandler.jsx)
+
+Crea un componente que maneje el inicio de sesión y actualice el rol del usuario en el contexto:
+import React, { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+
+const LoginHandler = () => {
+  const { setUserRole } = useContext(UserContext);
+
+  // Función para manejar el inicio de sesión
+  const handleLogin = (role) => {
+    setUserRole(role); // Actualiza el rol del usuario en el contexto
+  };
+
+  return (
+    <div>
+      <h2>Login</h2>
+      <button onClick={() => handleLogin('admin')}>Login as Admin</button>
+      <button onClick={() => handleLogin('user')}>Login as User</button>
+    </div>
+  );
+};
+
+export default LoginHandler;
+
+
+
+2. Mostrar el Menú Dinámicamente Según el Rol del Usuario
+
+En tu componente Menu.jsx, usa el contexto para mostrar las opciones del menú según el rol del usuario.
+Ejemplo de Componente de Menú (Menu.jsx)
+
+import React, { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+
+const Menu = () => {
+  const { userRole } = useContext(UserContext);
+
+  return (
+    <header>
+      <nav>
+        <h2><a href="/">{SITE_TITLE}</a></h2>
+        <div className="internal-links">
+          <HeaderLink href="/">Home</HeaderLink>
+          <HeaderLink href="/blog">Blog</HeaderLink>
+          <HeaderLink href="/about">About</HeaderLink>
+
+          {/* Opciones según el rol del usuario */}
+          {userRole === 'admin' && <HeaderLink href="/AllUsers">AllUsers</HeaderLink>}
+          {!userRole && <HeaderLink href="/getLogin">Login</HeaderLink>}
+          {userRole && <HeaderLink href="/Ventas">Ventas</HeaderLink>}
+        </div>
+        <div className="social-links">
+          {/* Social links */}
+        </div>
+      </nav>
+    </header>
+  );
+};
+
+export default Menu;
+
+3. Integrar el LoginHandler en tu Aplicación
+
+En tu componente ReactApp.jsx, incluye el componente LoginHandler para que los usuarios puedan iniciar sesión y actualizar su rol en el contexto.
+Ejemplo de ReactApp.jsx
+
+import React from 'react';
+import Menu from './Menu'; // Tu componente de menú
+import LoginHandler from './LoginHandler'; // Componente para manejar el login
+
+const ReactApp = () => {
+  return (
+    <div>
+      <Menu /> {/* Menú dinámico */}
+      <LoginHandler /> {/* Componente para manejar el login */}
+      {/* Otros componentes de tu aplicación */}
+    </div>
+  );
+};
+
+export default ReactApp;
+
+Ejemplo completo: 
+
+---
+import Base from "../components/Base.astro";
+import Container from "../components/Container.astro";
+import { UserProvider } from '../context/UserContext'; // Importa el contexto
+import ReactApp from '../components/ReactApp'; // Importa tu aplicación React
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Aplicación</title>
+</head>
+<body>
+  <Base>
+    <section class="relative pt-16 lg:pt-36">
+      <Container className={"flex flex-col lg:flex-row gap-10 lg:gap-12"}>
+        <div class="relative flex flex-col items-center text-center lg:text-left lg:py-7 xl:py-8 
+          lg:items-start lg:max-w-none max-w-3xl mx-auto lg:mx-0 lg:flex-1 lg:w-1/2">
+          
+          <h1 class="text-3xl/tight sm:text-4xl/tight md:text-5xl/tight xl:text-6xl/tight
+            font-bold text-heading-1">
+            Empresa de Investigaciones y  <span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-primary via-30% to-green-600">Proyectos Hidráulicos</span> Camagüey.
+          </h1>
+          
+          <div class="mt-10  w-full flex max-w-md mx-auto lg:mx-0">
+            <div class="flex sm:flex-row flex-col gap-5 w-full">
+              <form action="#"  class="py-1 pl-6 w-full pr-1 flex gap-3 items-center text-heading-3 shadow-lg shadow-box-shadow
+                border border-box-border bg-box-bg rounded-full ease-linear focus-within:bg-body  focus-within:border-primary">
+                <span class="min-w-max pr-2 border-r border-box-border">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 9v.906a2.25 2.25 0 01-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 001.183 1.981l6.478 3.488m8.839 2.51l-4.66-2.51m0 0l-1.023-.55a2.25 2.25 0 00-2.134 0l-1.022.55m0 0l-4.661 2.51m16.5 1.615a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V8.844a2.25 2.25 0 011.183-1.98l7.5-4.04a2.25 2.25 0 012.134 0l7.5 4.04a2.25 2.25 0 011.183 1.98V19.5z" />
+                  </svg>                                                                  
+                </span>
+                <input type="email" name="" id="" placeholder="correoAtencion@gmail.com" class="w-full py-3 outline-none bg-transparent">
+              </form>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    {/* Aquí envolvemos el contenido dinámico con el UserProvider */}
+    <UserProvider>
+      <ReactApp />
+    </UserProvider>
+  </Base>
+</body>
+</html>
+
+Para menu dinamico:
+
+import React, { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+
+// Estructura de datos para las opciones del menú
+const menuOptions = {
+  admin: [
+    { label: 'Home', href: '/' },
+    { label: 'AllUsers', href: '/AllUsers' },
+    { label: 'Ventas', href: '/Ventas' },
+    { label: 'Economico', href: '/Economico' },
+  ],
+  economico: [
+    { label: 'Home', href: '/' },
+    { label: 'Economico', href: '/Economico' },
+  ],
+  ventas: [
+    { label: 'Home', href: '/' },
+    { label: 'Ventas', href: '/Ventas' },
+  ],
+  default: [
+    { label: 'Home', href: '/' },
+    { label: 'Login', href: '/getLogin' },
+  ],
+};
+
+const Menu = () => {
+  const { userRole } = useContext(UserContext);
+
+  // Determinar las opciones del menú según el rol del usuario
+  const options = menuOptions[userRole] || menuOptions.default;
+
+  return (
+    <header>
+      <nav>
+        <h2><a href="/">{SITE_TITLE}</a></h2>
+        <div className="internal-links">
+          {/* Renderizar las opciones del menú dinámicamente */}
+          {options.map((option, index) => (
+            <HeaderLink key={index} href={option.href}>
+              {option.label}
+            </HeaderLink>
+          ))}
+        </div>
+        <div className="social-links">
+          {/* Social links */}
+        </div>
+      </nav>
+    </header>
+  );
+};
+
+export default Menu;
+
+
+import React, { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+
+const Menu = () => {
+  const { userRole } = useContext(UserContext);
+
+  return (
+    <header>
+      <nav>
+        <h2><a href="/">{SITE_TITLE}</a></h2>
+        <div className="internal-links">
+          {/* Si el usuario es un superuser, muestra todo el menú */}
+          {userRole === 'superuser' ? (
+            <>
+              <HeaderLink href="/">Home</HeaderLink>
+              <HeaderLink href="/blog">Blog</HeaderLink>
+              <HeaderLink href="/about">About</HeaderLink>
+              <HeaderLink href="/AllUsers">AllUsers</HeaderLink>
+              <HeaderLink href="/Ventas">Ventas</HeaderLink>
+              <HeaderLink href="/Economico">Economico</HeaderLink>
+            </>
+          ) : (
+            // Si no es superuser, solo muestra la opción de loguearse
+            <HeaderLink href="/getLogin">Login</HeaderLink>
+          )}
+        </div>
+        <div className="social-links">
+          {/* Social links */}
+        </div>
+      </nav>
+    </header>
+  );
+};
+
+export default Menu;
+
+
+2. Gestionar el Rol del Usuario
+
+Cuando un usuario se loguea, debes verificar si es un superuser o no, y actualizar el estado del contexto (userRole) en consecuencia.
+Ejemplo de Componente de Login (LoginHandler.jsx)
+
+
+import React, { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+
+const LoginHandler = () => {
+  const { setUserRole } = useContext(UserContext);
+
+  // Función para manejar el inicio de sesión
+  const handleLogin = (role) => {
+    setUserRole(role); // Actualiza el rol del usuario en el contexto
+  };
+
+  return (
+    <div>
+      <h2>Login</h2>
+      <button onClick={() => handleLogin('superuser')}>Login as Superuser</button>
+      <button onClick={() => handleLogin('user')}>Login as User</button>
+    </div>
+  );
+};
+
+export default LoginHandler;
+
+
+import React from 'react';
+import Menu from './Menu'; // Tu componente de menú
+import LoginHandler from './LoginHandler'; // Componente para manejar el login
+
+const ReactApp = () => {
+  return (
+    <div>
+      <Menu /> {/* Menú dinámico */}
+      <LoginHandler /> {/* Componente para manejar el login */}
+      {/* Otros componentes de tu aplicación */}
+    </div>
+  );
+};
+
+export default ReactApp;

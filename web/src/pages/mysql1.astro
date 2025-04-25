@@ -1,0 +1,12 @@
+const response = await fetch('/api/data');
+const users = await response.json();
+---
+
+<h1>Usuarios de la base de datos:</h1>
+<ul>
+  {users.map((user) => (
+    <li key={user._id}>
+      {user.name} - {user.email}
+    </li>
+  ))}
+</ul>

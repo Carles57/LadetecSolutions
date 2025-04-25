@@ -1,0 +1,162 @@
+---
+import Logo from "@/components/Logo.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
+import config from "../config/config.json";
+import menu from "../config/menuGerencia.json";
+
+export interface ChildNavigationLink {
+  name: string;
+  url: string;
+}
+
+export interface NavigationLink {
+  name: string;
+  url: string;
+  hasChildren?: boolean;
+  children?: ChildNavigationLink[];
+}
+
+const { main }: { main: NavigationLink[] } = menu;
+const { navigation_button, settings } = config;
+const { pathname } = Astro.url;
+---
+
+<header class={`z-30 ${settings.sticky_header && "sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm"}`}>
+  <nav class="navbar container mx-auto px-2 py-2 flex items-center justify-between">
+    <logo />
+    <div class="order-0">
+      <a href="https://Ladetec.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="/images/ladetec3.jpg" class="h-8" alt="Ladetec Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Solutions</span>
+        </a>
+    </div>
+    
+    <!-- navbar toggler -->
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1"
+    >
+      <svg id="show-button" class="h-5 fill-current block" viewBox="0 0 20 20">
+        <title>Menu Open</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-5 fill-current hidden" viewBox="0 0 20 20">
+        <title>Menu Close</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    
+    <!-- Menú principal mejorado -->
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-3 hidden w-full pb-4 lg:order-1 lg:flex lg:w-auto lg:pb-0 lg:gap-1 xl:gap-2"
+    >
+      {main.map((menu) => (
+        <>
+          {menu.hasChildren ? (
+            <li class="nav-item nav-dropdown group relative">
+              <span
+                class={`nav-link inline-flex items-center text-sm px-3 py-2 rounded-lg transition-all duration-200 ease-out ${
+                  menu.children?.some(child => 
+                    pathname === child.url || pathname === `${child.url}/`
+                  )
+                    ? "text-primary dark:text-white font-medium bg-gray-100 dark:bg-gray-800"
+                    : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                }`}
+              >
+                <!-- Icono -->
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                
+                {menu.name}
+                <svg class="h-3 w-3 ml-1 fill-current transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 20 20">
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </span>
+              
+              <!-- Dropdown mejorado -->
+              <ul class="nav-dropdown-list hidden absolute left-0 top-full mt-1 group-hover:block bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow-lg min-w-[200px] transition-all duration-200 ease-out origin-top scale-y-0 opacity-0 group-hover:scale-y-100 group-hover:opacity-100">
+                {menu.children?.map((child) => (
+                  <li class="nav-dropdown-item border-b border-gray-100 dark:border-gray-700 last:border-0">
+                    <a
+                      href={child.url}
+                      class={`nav-dropdown-link block px-4 py-2 text-sm transition-colors duration-150 ${
+                        (pathname === `${child.url}/` || pathname === child.url)
+                          ? "text-primary dark:text-white bg-gray-50 dark:bg-gray-700"
+                          : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                      }`}
+                    >
+                      {child.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ) : (
+            <li class="nav-item">
+              <a
+                href={menu.url}
+                class={`nav-link inline-flex items-center text-sm px-3 py-2 rounded-lg transition-colors duration-200 ${
+                  (pathname === `${menu.url}/` || pathname === menu.url)
+                    ? "text-primary dark:text-white font-medium bg-gray-100 dark:bg-gray-800"
+                    : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                }`}
+              >
+                <!-- Icono -->
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                {menu.name}
+              </a>
+            </li>
+          )}
+        </>
+      ))}
+      
+      {navigation_button.enable && (
+        <li class="mt-2 inline-block lg:hidden">
+          <a
+            class="btn btn-outline-primary btn-sm px-3 py-1.5 text-sm w-full text-center"
+            href={navigation_button.link}
+          >
+            {navigation_button.label}
+          </a>
+        </li>
+      )}
+    </ul>
+
+    <!-- Controles derecho -->
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0 gap-2">
+      <ThemeSwitcher className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors" />
+      {navigation_button.enable && (
+        <a
+          class="btn btn-outline-primary btn-sm hidden lg:inline-block px-3 py-1.5 text-sm"
+          href={navigation_button.link}
+        >
+          {navigation_button.label}
+        </a>
+      )}
+    </div>
+  </nav>
+</header>
+
+<style>
+  /* Transiciones suaves para el menú móvil */
+  .navbar-nav {
+    transition: max-height 0.3s ease-out;
+  }
+  
+  /* Mejor espaciado para items del dropdown */
+  .nav-dropdown-item a {
+    margin: 0.125rem 0;
+  }
+  
+  /* Efecto hover más sutil */
+  .nav-link:hover, .nav-dropdown-link:hover {
+    transition: all 0.2s ease;
+  }
+</style>

@@ -1,0 +1,16 @@
+---
+import JsonFetcher from '../components/JsonFetcher.jsx';
+
+// Obtén el parámetro de la URL
+const { id } = Astro.params;
+---
+
+<html>
+  <head>
+    <title>Obtener JSON dinámico</title>
+  </head>
+  <body>
+    <h1>Obtener JSON dinámico</h1>
+    <JsonFetcher id={id} />
+  </body>
+</html>

@@ -1,0 +1,27 @@
+SELECT 
+ eps.employee_id,
+ MAX(e.tasa) as tasa,
+ eps.date,
+ SUM(eps.hours * e.tasa * eps.exchange_rate) as total
+   FROM employee_payment_splits eps 
+    inner join employee e ON eps.employee_id = e.id
+    GROUP BY eps.employee_id, eps.date, 
+
+SELECT eps.employee_id,
+ e.tasa,
+ eps.date, 
+ SUM(eps.hours * e.tasa * eps.exchange_rate) as total
+ FROM employee_payment_splits eps
+ INNER JOIN employee e ON e.id = eps.employee_id
+ GROUP BY eps.employee_id,
+ substring(eps.date,6,2),
+ e.tasa
+
+
+
+
+ 9750
+15000
+ 1500
+ 3000
+ 29250

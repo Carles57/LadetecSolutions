@@ -1,0 +1,195 @@
+<div class="container p-1">
+  <div align="center">
+    <h3>Empresa de Investigaciones y Proyectos Hidráulicos</h3>
+  </div>
+  <div align="center">
+    <h3>Registro de Planes del Año: {{anno}} y Mes: {{mes}}  </h3>
+  </div>
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <h5><strong><em>Planes</em></strong>.  Usuario: <em>{{user.username}}</em> Unidad: ESI Cmg. </h5>
+    </div>
+  </div>
+  <div align="center">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+      <div>
+        <p>Registro de los Planes de Costos y Gastos de la Unidad</p>
+      </div>
+    </button>
+  </div>
+
+  <div id="scrolltable"
+    style="overflow:auto; border-right: #6699CC 0px solid; border-top: #999999 1px solid; border-left: #6699CC 0px solid; border-bottom: #6699CC 0px solid; scrollbar-arrow-color : #999999; scrollbar-face-color : #666666; scrollbar-track-color :#3333333; height:500px; width: 100%;"
+    align="center" clear:both>
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+
+        <div class="card-body">
+          <h5>
+            <div align="center" id="modalidad">Conceptos: nuevo registro...</div>
+          </h5>
+          <form action="/links/planes_por_unidad" method="POST">
+            <table width="50%" class="my_table ">
+              <thead>
+                <th width="50%">
+                  <h5>Selecciona la Unidad</h5>
+                </th>
+                <th width="50%">
+                  <h5>
+                    <div align="center">Modificar</div>
+                  </h5>
+                </th>
+              </thead>
+              <tr>
+                <td>
+                  <select id="id_unidad_sel_planes" name="unidad" class="form-control">
+                    <option id="1" value="UEB 1" class="form-control">Camaguey</option>
+                    <option id="2" value="UEB 2" class="form-control">Las Tunas</option>
+                    <option id="3" value="UEB 4" class="form-control">Ciego</option>
+                  </select>
+                </td>
+                <td>
+                  <input type="checkbox" class="form-control" id="id_editar" name="editar" value="uncheck">
+                </td>
+              </tr>
+            </table>
+            <table class="table table-bordered table-borderless table td" width="100%">
+              <tr>
+                <td>
+                  <!--Materias Primas-->
+                  <div align="center">Materias Primas</div>
+
+                  <input type="text" class="form-control" onClick="this.select();" id="materias_primas"
+                    name="materias_primas" value="{{links.materias_primas}}">
+                </td>
+                <td>
+                  <!--Combustibles-->
+                  <div align="center">Combustibles</div>
+
+                  <input type="text" class="form-control" onClick="this.select();" id="combustible" name="combustible"
+                    value="{{links.combustible}}">
+                </td>
+                <td>
+                  <!--Energia-->
+                  <div align="center">Energia</div>
+                  <input type="text" class="form-control" onClick="this.select();" id="energia" name="energia"
+                    value="{{links.energia}}">
+                </td>
+                <td>
+                  <!--Salario-->
+                  <div align="center">Salario</div>
+                  <input type="text" class="form-control" onClick="this.select();" id="salario" name="salario"
+                    value="{{links.salario}}">
+                </td>
+
+                <td>
+                  <!--Depreciación-->
+                  <div align="center">Depreciación</div>
+                  <input type="text" class="form-control" onClick="this.select();" id="depreciacion" name="depreciacion"
+                    value="{{links.depreciacion}}">
+                </td>
+                <td>
+                  <!--costo_generales-->
+                  <div align="center">Generales y Administración</div>
+                  <input type="text" class="form-control" onClick="this.select();" id="costos_generales"
+                    name="costos_generales" value="{{links.costos_generales}}">
+                </td>
+              </tr>
+            </table>
+            <table class="table table-bordered table-borderless table td" width="100%">
+              <tr>
+                <td>
+                  <!--Financieros-->
+                  <div align="center">Financieros</div>
+                  <input type="text" class="form-control" onClick="this.select();" id="financieros" name="financieros"
+                    value="{{links.financieros}}">
+                </td>
+                <td>
+                  <!--Osde-->
+                  <div align="center">OSDE</div>
+
+                  <input type="text" class="form-control" onClick="this.select();" id="gasto_osde" name="gasto_osde"
+                    value="{{links.gasto_osde}}">
+                </td>
+                <td>
+                  <!--Tributos-->
+                  <div align="center">Impuestos</div>
+                  <input type="text" class="form-control" onClick="this.select();" id="tasas" name="tasas"
+                    value="{{links.tasas}}">
+                </td>
+                <td>
+                  <!--Depreciación-->
+                  <div align="center">Otros Gastos</div>
+                  <input type="text" class="form-control" onClick="this.select();" id="otros_gastos" name="otros_gastos"
+                    value="{{links.otros_gastos}}">
+                </td>
+                <td>
+                  <!--Ventas-->
+                  <div align="center">Gastos de Ventas</div>
+                  <input type="text" class="form-control" onClick="this.select();" id="ventas" name="ventas"
+                    value="{{links.ventas}}">
+                </td>
+                <td>
+                  <!--Faltantes-->
+                  <div align="center">Faltantes</div>
+                  <input type="text" class="form-control" onClick="this.select();" id="faltantes" name="faltantes"
+                    value="{{links.faltantes}}">
+                </td>
+                <td>
+                  <!--desastres-->
+                  <div align="center">Desastres</div>
+                  <input type="text" class="form-control" onClick="this.select();" id="desastres" name="desastres"
+                    value="{{links.desastres}}">
+                </td>
+                <td>
+                  <!--monetarios-->
+                  <div align="center">Monetarios</div>
+                  <input type="text" class="form-control" onClick="this.select();" id="monetarios" name="monetarios"
+                    value="{{links.monetarios}}">
+                </td>
+              </tr>
+            </table>
+
+            <div class="form-group">
+              <button class="btn btn-success btn-block">
+                Save
+              </button>
+            </div>
+            <input type="text" id="anno" name="anno" value="{{anno}}">
+            <input type="text" id="mes" name="mes" value="{{mes}}">
+            <input type="text" id="id_por_unidad_planes" name="area" value="1">
+            <input type="text" id="id_por_unidad_planes_editar" name="editar_planes" value="0">
+
+          </form>
+        </div>
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Ayuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p><strong>Planes Totales de la Unidad Seleccionada.</strong></p>
+                <p>Si quieres modificar el registro del Año {{anno}} de la Unidad: marca <strong>
+                    <h3><em>Editar</em></h3>
+                  </strong></p>
+                <p>Si no quieres editar y existe el registro, se borrará el registro existente, y <strong>
+                    <h4>se creará uno nuevo!</h4>
+                  </strong></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

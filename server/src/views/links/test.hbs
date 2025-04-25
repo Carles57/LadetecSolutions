@@ -1,0 +1,128 @@
+<div id="scrolltable" style="overflow:auto; border-right: #6699CC 1px solid; border-top: #999999 1px solid; border-left: #6699CC 1px solid; border-bottom: #6699CC 1px solid; scrollbar-arrow-color : #999999; scrollbar-face-color : #666666; scrollbar-track-color :#3333333; height:500px; width: 100%;" align="center" clear:both>
+   <div class="container p-2">
+     
+       <div align="center"><h3>Empresa de Servicios Ingenieros Hidráulicos</h3></div>  
+         <div class="row">	     
+            <div class="col-md-12" align="center">
+              <h5>Servicios del usuario <em>{{user.username}}</em> de la Unidad {{user.fullname}} </h5>
+            </div>           
+           
+         </div>   
+   <div class="container">
+    
+  
+ <form action= "/links/test_actualizar" method="POST">  
+
+ <table width="100%" class="table bg-primary" align="center" >
+            <thead class="bg-blue text-white">
+              <th width="40%"> <div align="center"><strong><h5>Navega entre las páginas</h5></strong></div></th>
+              <th width="30%"><div id="informacion" align="center"><strong><h5>Filtrar Servicios por el Año</h5></strong></div></th>
+              <th width="30%"><div align="center"><strong><h5>Buscar por Cógigo</h5></strong></div></th>
+           </thead>
+       <tr>
+         <td>{{{pages}}}</td>
+           <td>
+            <select id="filtra1" name="id_provincia" class="form-control">
+            
+               {{#each str_annos}}     
+                <option id="{{id_anno}}" name="idAnno" value="http://localhost:8081/links/test/1/{{anno}}-01-01"  class="form-control">{{anno}}</option>
+               {{/each }}
+            </select>
+           </td>
+            <td>
+               <select id="filtra_codigo" name="id_codigo" class="form-control" >
+                  {{#each listado_codigos}}     
+                     <option id="{{id_row_contrato}}" name="idContrato" value='http://localhost:8081/links/test/1/{{codigo_contrato}}'  class="form-control">{{codigo_contrato}}</option>
+                  {{/each }}
+               </select>
+            </td>
+
+       </tr>
+   </table>  
+        <table id="mitabla" class="table table-bordered table-blue  table td" width="100%">
+          <thead class="bg-dark text-white">
+           <th width="5%"><h5><div align="center">ID</div></h5></th> 
+           <th width="10%"><h5><div align="center">Código</div></h5></th> 
+           <th width="20%"><h5><div align="center">Nombre</div></h5></th>
+           <th width="30%"><h5><div align="center">Descripción</div></h5></th>
+           <th width="10%"><h5><div align="center">Valor</div></h5></th>
+           <th width="10%"><h5><div align="center">Inicio</div></h5></th>
+           <th width="10%"><h5><div align="center">Término</div></h5></th>
+           <th width="5%"><h5><div align="center">Órdenes</div></h5></th>
+
+         </thead>  
+          <tbody id="el_tbody">
+
+             {{#each listado_proyectos }}
+         <tr>
+             <td>
+                <div class="form-group">
+                      <input type="text" class="form-control" id="id_proyecto" name="id_proyecto" value="{{id_row_contrato}}">
+                </div>
+            </td>
+             <td>
+                <div class="form-group">
+                      <input type="text" class="form-control" id="codigo_contrato" name="codigo_contrato" value="{{codigo_contrato}}">
+                </div>
+            </td>
+             <td>
+                <div align="center" class="form-group">
+                   <textarea class="form-control" name="nombre_contrato" >{{nombre_contrato}}</textarea> 
+                </div>   
+             </td>
+             <td>
+                <div align="center" class="form-group">
+                   <textarea class="form-control" name="descripcion_contrato" >{{descripcion_contrato}}</textarea> 
+                </div>   
+             </td>
+             <td>
+                <div align="center" class="form-group">
+                   <input type="text" class="form-control" id="valor_contratado" name="valor_contratado" value="{{valor_contratado}}">
+                </div>   
+             </td>
+             
+             <td>
+                <div align="center" class="form-group">
+                   <input type="text" class="form-control" id="fecha_inicio" name="fecha_inicio" value="{{fecha_inicio}}" disabled>
+                </div>   
+             </td>
+             <td>
+                <div align="center" class="form-group">
+                   <input type="text" class="form-control" id="fecha_terminacion" name="fecha_terminacion" value="{{fecha_terminacion}}" disabled>
+                </div>   
+             </td>
+             <td>
+                <table>
+                  <tr>
+                     <td>
+                      <div align="center" class="form-group">
+                        <a class="form-control" id="ordenes_add" href="/links/add_ordenes/{{id_row_contrato}}/{{codigo_contrato}}">Nueva</a>
+                      </div>  
+                     </td>
+                     <td> 
+                      <div align="center" class="form-group">
+                        <a class="form-control" id="ordenes_ir"   href="/links/ver_ordenes/1/{{id_row_contrato}}">Todas</a>
+                      </div>
+                     </td> 
+                  </tr> 
+                </table>  
+             </td>
+             
+         </tr>   
+        {{/each }}
+      </tbody>
+      </table>   
+      
+      </form>
+      <a href="#ancla">Ancla</a>
+       <div align="center" id="id_info" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+               <span aria-hidden="true">&times</span>
+            </button>
+      </div>
+   </div>   
+  </div>  
+ </div> 
+
+ 
+   

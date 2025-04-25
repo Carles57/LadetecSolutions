@@ -1,0 +1,150 @@
+
+<div class="container-fluid p-1">
+     
+       <div align="center"><h3>Empresa de Servicios Ingenieros Hidráulicos</h3>
+	  </div>  
+         <div class="row">	     
+            <div class="col-md-12" align="center">
+              <h5>Registro de ÓRDENES de Producciòn del usuario <em>{{user.username}}</em> de la Unidad {{user.fullname}} </h5>
+            </div>           
+           
+         </div>   
+  <div class="container-fluid">
+    <div id="scrolltable" style="overflow:auto; border-right: #6699CC 1px solid; border-top: #999999 1px solid; border-left: #6699CC 1px solid; border-bottom: #6699CC 1px solid; scrollbar-arrow-color : #999999; scrollbar-face-color : #666666; scrollbar-track-color :#3333333; height:500px; width: 100%;" align="center" clear:both>
+    
+    <div class="box">
+	<form class="form-horizontal" method="POST"  action="/links/add_ordenes"> 
+
+	 <table class="table text-center table-bordered table-blue  table td" width="100%">
+      <thead class="bg-dark text-white">
+	  <tr>
+		
+  	    <th width="35%"><div align="center">Servicio</div></th>
+		<th width="35%"><div align="center">Obra</div></th>
+		<th width="5%"><div align="center">Consec.</div></th>
+		<th width="5%"><div align="center">Mes/Año Orden</div></th>
+		<th width="5%"><div align="center">Inicio</div></th>
+		<th width="5%"><div align="center">Final</div></th>
+		<th width="10%"><div align="center">Salvar</div></th>
+	  </tr>
+	</thead>	
+		<tr>
+			<td > <!-- tipo de servicio -->
+			   <select id="id_servicio" name="id_servicio" class="form-control" >
+                  {{#each listado_servicios}}     
+                     <option id="{{id}}" name="idd_servicio" value="{{cod}}">{{servicio}} </option>
+                  {{/each }}
+               </select>
+			</td>
+			<td> <!-- tipo de obra -->
+			  <select id="id_obra" name="id_obra" class="form-control" >
+                  {{#each listado_obras}}     
+                     <option id="{{id}}" class="form-control" name="idd_obra" value="{{cod}}">{{obra}}</option>
+                  {{/each }}
+               </select> 
+			</td>
+			<td> <!-- consecutivo -->
+			  <input type="text" class="form-control" name="consecutivo" id="mi_consecutivo" value="{{new_consecutivo}}" required>
+		    </td>
+			<td> <!-- mes -->
+			  <input type="date" class="form-control" name="mes" id="id_mes" value="{{g_fecha_entrada}}"  required>
+		    </td>
+			<td> <!-- fecha Inicio -->
+			  <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" value="{{g_fecha_entrada}}"   required>
+		    </td>
+			<td> <!-- fecha fin -->
+			  <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" value="{{g_fecha_entrada}}"   required>
+		    </td>
+		   
+		    <td>
+			  <div  align="center">     
+					<button type="submit" class="form-control"><span class="glyphicon glyphicon-floppy-saved"></span>Save</button>
+			  </div>
+		  </td>
+		    
+		</tr>
+	</table>
+	 <table class="table text-center table-bordered table-blue  table td" width="100%">
+      <thead class="bg-dark text-white"> 
+        <tr>
+        	<th width="25%"><div align="center">Orden</div></th>
+		    <th width="30%"><div align="center">Descripción</div></th>
+       	    <th width="10%"><div align="center">Bruta</div></th>
+       	    <th width="10%"><div align="center">Acumulado</div></th>
+       	    <th width="10%"><div align="center">Mercantil</div></th>
+       	    <th width="5%"><div align="center">Venta</div></th>
+			<th width="10%"><div align="center">Factura</div></th>
+        </tr>
+		</thead>
+		<tr>
+		  <td> <!-- Orden -->
+		    <table width="100%">
+		      <tr>		
+				<th width="48%"></th>
+				<th width="15%"></th>
+				<th width="15%"></th>
+				<th width="25%"></th>
+	          </tr>
+			  <tr>
+		      <td>
+			    <input type="text" id="codigo_contrato" name="codigo_contrato" class="form-control" value="{{cod_contrato}}"/>
+			  </td>  
+			   <td>
+			    <input type="text" id="id_tipo_servicio" name="id_tipo_ser" class="form-control" value="0"/>
+			  </td>
+			  <td>
+			    <input type="text" id="id_tipo_obra" name="id_tipo_obra" class="form-control" value="0"/>
+			  </td>
+			  <td>
+			    <input type="text" class="form-control"  id="consecutivo" name="text_consecutivo" value="{{new_consecutivo}}"/>
+			  </td>
+			  </tr>
+			</table> 
+		  </td>
+
+		 <td> <!-- Descripci�n -->
+		   <div>
+			  <textarea class="form-control"   name="descripcion"  required>{{nombre_contrato}}</textarea>
+		   </div>
+		 </td>
+
+		 <td> <!-- Valor Inicial -->
+		   <div>
+			 <input type="text" class="form-control" id="valor_inicial" name="Vmensual"  placeholder="0" required>
+		   </div>
+		 </td>
+         <td> <!-- Valor acumulado -->
+		   <div>
+			 <input type="text" class="form-control"  id="acumulado" name="acumulado"  value="0" required>
+		   </div>
+		 </td> 
+		 <td> <!-- Valor mercantil -->
+		   <div>
+			 <input type="text" class="form-control" id="mercantil" name="mercantil"  value="0" required>
+		   </div>
+		 </td> 
+		 
+		 
+		 <td> <!-- Valor vendido -->
+		   <div>
+			 <input type="checkbox" class="form-control" id="id_vendido_add" name="vendido"  value="uncheck">
+			 <input type="text" id="id_venta" name="terminada" value="0">
+		   </div>
+		 </td> 
+		  <td> <!-- Factura -->
+			  <div>
+				<input type="text" class="form-control" name="factura" value="0/0" required>
+			  </div>   
+		 </td>
+
+	  </tr>
+	</table> 
+	  <input type="text" id="area" name="MM_update" value={{userid}}>
+	  <input type="text" id="idd_contrato" name="id_contrato" value={{id_contrato}}>
+	  <input type="text" id="anno" name="anno" value="{{anno}}">		  
+
+   </form>	 
+  </div>
+    </div> 
+  </div>	
+</div>

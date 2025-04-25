@@ -1,0 +1,47 @@
+---
+ 
+ import SelectMethodsPayment from '../components/SelectMethodToPayment.jsx';
+import Base from "../components/BaseGerencia.astro";
+import Sidebar from "../components/sidebarAdmin.astro";
+import Container from"../components/Container.astro";
+//export const prerender = true;
+
+const searchParams = Astro.url.searchParams;
+const employeeId = searchParams.get('employeeId');
+const name = searchParams.get('name');
+const selectedDate = searchParams.get('selectedDate');
+const totalHours = searchParams.get('totalHours');
+const tasa = searchParams.get('tasa');
+
+// Validación mejorada
+if (!employeeId || !name || !selectedDate || !totalHours || !tasa) {
+  throw new Error('Parámetros employeeId y name son requeridos');
+}
+---
+
+<Base>
+  <section class="flex flex-col lg:flex-row min-h-screen">
+    <Container className={"flex flex-col lg:flex-row gap-10 lg:gap-10"}>
+      <!-- Sidebar -->
+      <Sidebar />
+
+       <div class="relative flex flex-col items-center text-center lg:text-left lg:py-7 xl:py-1 lg:items-start
+                  lg:max-w-none max-w-5xl mx-auto lg:mx-0 lg:flex-1 lg:w-1/2">
+                  <SelectMethodsPayment 
+                  employeeId={employeeId} 
+                  employeeName={decodeURIComponent(name)} 
+                  selectedDate={searchParams.get('selectedDate')}
+                  totalHours={searchParams.get('totalHours')}
+                  employeeRate = {searchParams.get('tasa')}
+                  client:load 
+                />
+      </div>
+    </Container>
+  </section>
+  {/* Aquí envolvemos el contenido dinámico con el UserProvider 
+    <UserProvider>
+      <ReactApp />
+    </UserProvider> */}
+   
+ 
+</Base>

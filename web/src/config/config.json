@@ -1,0 +1,46 @@
+{
+    "site": {
+      "title": "Ladetec Solutions Software. Camaguey.",
+      "base_url": "http://ladetec.local",
+      "base_path": "/",
+      "trailing_slash": false,
+      "favicon": "/images/favicon.ico",
+      "logo": "/images/ladetec.jpg",
+      "logo_darkmode": "/images/ladetec.jpg",
+      "logo_width": "150",
+      "logo_height": "100",
+      "logo_text": "Solutions"
+    },
+  
+    "settings": {
+      "search": true,
+      "sticky_header": true,
+      "theme_switcher": true,
+      "default_theme": "system",
+      "pagination": 2,
+      "summary_length": 200,
+      "blog_folder": "blog"
+     },
+    "params": {
+      "contact_form_action": "#",
+      "copyright": "Ladetec Solutions. Camaguey,"
+    },
+  
+    "navigation_button": {
+      "enable": true,
+      "label": "Facebook",
+      "link": "https://www.facebook.com/people/Ladetec/100089567692080/"
+    },
+  
+    "disqus": {
+      "enable": true,
+      "shortname": "themefisher-template",
+      "settings": {}
+    },
+  
+    "metadata": {
+      "meta_author": "Ladetec Camaguey",
+      "meta_image": "/images/ladetec.jpg",
+      "meta_description": "Ladetec Solutions Software. Camaguey"
+    }
+  }

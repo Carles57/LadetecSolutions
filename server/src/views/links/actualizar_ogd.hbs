@@ -1,0 +1,300 @@
+<div class="container p-1">
+    <div align="center"><h3>Empresa de Servicios Ingenieros Hidráulicos</h3></div>  
+         <div class="row">	     
+            <div class="col-md-12" align="center">
+              <h5>Actualizar Orden: <strong><em>{{ogdirectos}} </em></strong>. Usuario: <em>{{user.username}}</em> Unidad: {{user.fullname}} </h5>
+            </div>           
+         </div>  
+   <div align="center"><p><strong> Comprende los importes de otros gastos identificables que
+se incurren en el servicio técnico – profesional.</strong></p></div>      
+   <div id="scrolltable" style="overflow:auto; border-right: #6699CC 0px solid; border-top: #999999 1px solid; border-left: #6699CC 0px solid; border-bottom: #6699CC 0px solid; scrollbar-arrow-color : #999999; scrollbar-face-color : #666666; scrollbar-track-color :#3333333; height:500px; width: 100%;" align="center" clear:both>
+  <div class="row">
+      <div class="col-md-12 mx-auto">
+         
+           <div class="card-body">
+               <h5><div align="center"><em>Otros Gastos Directos  </em></strong></div></h5>
+              <form action= "/links/actualizar_ogd/{{ogdirectos}}/{{id_orden}}" method="POST">
+               <table class="table table-bordered table-borderless table td" width="100%">  
+                  {{#each ogdir }}  
+                  <tr>
+                   <td> <!--Gastos de análisis y programacion-->
+                        <div align="center" class="container p-1">
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                            Programación.
+                          </button>
+                       </div>
+                          <input type="text"  class="form-control" onClick="this.select();" name="gasto_programacion" value="{{gasto_programacion}}">
+                   </td>
+                    <td> <!-- gasto_gestion_tecnica --> 
+                        <div align="center" class="container p-1">
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleGestion">
+                            Gestión Técnica.
+                          </button>
+                        </div>  
+                          <input type="text"  class="form-control" onClick="this.select();" name="gasto_gestion_tecnica" value="{{gasto_gestion_tecnica}}">
+                   </td>
+                     <td> <!-- gastos_dirección_gestion_calidad --> 
+                        <div align="center" class="container p-1">
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleCalidad">
+                            Calidad.
+                          </button>
+                        </div> 
+                       <input type="text"  class="form-control" onClick="this.select();" name="gastos_direccion_gestion_calidad" value="{{gastos_direccion_gestion_calidad}}">
+                   </td>
+                     <td> <!-- gastos_traslado_equipos --> 
+                        <div align="center" class="container p-1">
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleTraslado">
+                            Traslado Equipos
+                          </button>
+                        </div> 
+                       <input type="text"  class="form-control" onClick="this.select();" name="gastos_traslado_equipos" value="{{gastos_traslado_equipos}}">
+                   </td>
+                      <td> <!-- gastos_dietas_alojamiento --> 
+                       <div align="center" class="container p-1">
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleDietas">
+                            Dietas/Alojamiento
+                          </button>
+                        </div> 
+                       <input type="text"  class="form-control" onClick="this.select();" name="gastos_dietas_alojamiento" value="{{gastos_dietas_alojamiento}}">
+                   </td>
+                    </td>
+                      <td> <!-- gastos_electricidad_comunicacion --> 
+                        <div align="center" class="container p-1">
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleElectricidad">
+                            Electricidad
+                          </button>
+                        </div> 
+                       <input type="text"  class="form-control" onClick="this.select();" name="gastos_electricidad_comunicacion" value="{{gastos_electricidad_comunicacion}}" >
+                   </td>
+                  </tr>
+                  <tr>
+                   <td> <!--Gastos normas-->
+                      <div align="center" class="container p-1">
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleNormas">
+                            Normas
+                          </button>
+                        </div> 
+                      <input type="text"  class="form-control" onClick="this.select();" name="gastos_normas" value="{{gastos_normas}}">
+                   </td>
+                    <td> <!--Gastos derecho autor-->
+                      <div align="center" class="container p-1">
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleDerechos">
+                            Derechos Autor
+                          </button>
+                        </div> 
+                      <input type="text"  class="form-control" onClick="this.select();" name="gastos_derecho_autor" value="{{gastos_derecho_autor}}">
+                   </td>
+                    <td> <!--Gastos higiene_trabajo-->
+                       <div align="center" class="container p-1">
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleHigiene">
+                            Higiene Trabajo
+                          </button>
+                        </div> 
+                      <input type="text"  class="form-control" onClick="this.select();" name="gastos_higiene_trabajo" value="{{gastos_higiene_trabajo}}">
+                   </td>
+                   
+                  </tr> 
+                    {{/each }}
+                </table>
+                 <div class="form-group">
+                     <button class="btn btn-success btn-block">
+                         Actualizar
+                     </button>
+                 </div>
+                 <input type="text" name="id_contrato_actual" value="{{contrato}}">
+              </form>
+            </div>
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Gastos de Programación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <p>Gastos de programación y control del o de los servicios técnico – profesionales, en sus distintos
+           alcances de sus Estructuras de Desagregación definidas en el punto 2.4;
+         </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleGestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Gestión Técnica</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Gastos de los sistemas de dirección y gestión técnica en información técnico - tecnológica y
+           normalizativa, bases de diseño, de contenidos y de datos de distintas índoles y otros recursos
+           similares, requeridos en el proceso de trabajo u operación del servicio técnico - profesional;
+         </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleCalidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Calidad</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Gastos de dirección y gestión de la calidad y otros integrados (en prevención, control y otros
+           requeridos instituidos en estos sistemas por las normativas vigentes
+         </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleTraslado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Traslado Equipos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Gastos de dirección y gestión de la calidad y otros integrados (en prevención, control y otros
+           requeridos instituidos en estos sistemas por las normativas vigentes
+         </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleDietas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Dietas y Alojamiento</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Gastos de dirección y gestión de la calidad y otros integrados (en prevención, control y otros
+           requeridos instituidos en estos sistemas por las normativas vigentes
+         </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleElectricidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Electricidad</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Gastos de dirección y gestión de la calidad y otros integrados (en prevención, control y otros
+           requeridos instituidos en estos sistemas por las normativas vigentes
+         </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleNormas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Normas</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Gastos de dirección y gestión de la calidad y otros integrados (en prevención, control y otros
+           requeridos instituidos en estos sistemas por las normativas vigentes
+         </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleDerechos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Derechos de Autor</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Gastos de dirección y gestión de la calidad y otros integrados (en prevención, control y otros
+           requeridos instituidos en estos sistemas por las normativas vigentes
+         </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleHigiene" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Higiene de Trabajo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Gastos de dirección y gestión de la calidad y otros integrados (en prevención, control y otros
+           requeridos instituidos en estos sistemas por las normativas vigentes
+         </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>  

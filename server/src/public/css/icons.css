@@ -1,0 +1,263 @@
+/ *!
+ * Bootstrap v3.0.0
+ *
+ * Copyright 2013 Twitter, Inc
+ * Con licencia de Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Diseñado y construido con todo el amor del mundo @twitter por @mdo y @fat.
+ * /
+
+
+artículo, aparte, detalles, figcaption, figure, footer, header, hgroup, main, nav, section, summary {display: block;}
+audio, lienzo, video {display: inline-block;}
+audio: no ([controles]) {pantalla: ninguna; altura: 0;}
+[oculto] {pantalla: ninguno;}
+html {font-family: sans-serif; -webkit-text-size-adjust: 100%; - ms-text-size-adjust: 100%;}
+cuerpo {margin: 0;}
+a: focus {contorno: punteado fino;}
+a: active, a: hover {esquema: 0;}
+h1 {tamaño de fuente: 2em; margen: 0.67em 0;}
+abbr [título] {borde inferior: 1px con puntos;}
+b, fuerte {font-weight: bold;}
+dfn {estilo de fuente: cursiva;}
+hr {-moz-box-sizing: content-box; box-sizing: content-box; altura: 0;}
+marca {fondo: # ff0; color: # 000;}
+código, kbd, pre, samp {familia de fuentes: monoespacio, serif; tamaño de fuente: 1em;}
+pre {espacio en blanco: pre-wrap;}
+q {citas: "\ 201C" "\ 201D" "\ 2018" "\ 2019";}
+pequeño {tamaño de fuente: 80%;}
+sub, sup {tamaño de fuente: 75%; altura de línea: 0; posición: relativa; alineación vertical: línea de base;}
+sup {arriba: -0.5em;}
+sub {parte inferior: -0.25em;}
+img {borde: 0;}
+svg: not (: root) {overflow: hidden;}
+figura {margen: 0;}
+fieldset {border: 1px solid # c0c0c0; margin: 0 2px; padding: 0.35em 0.625em 0.75em;}
+leyenda {borde: 0; relleno: 0;}
+botón, entrada, seleccionar, área de texto {familia de fuentes: heredar; tamaño de fuente: 100%; margen: 0;}
+botón, entrada {altura de línea: normal;}
+botón, seleccione {text-transform: none;}
+botón, entrada html [tipo = "botón"], entrada [tipo = "restablecer"], entrada [tipo = "enviar"] {- webkit-apariencia: botón; cursor: puntero;}
+botón [deshabilitado], entrada html [deshabilitado] {cursor: predeterminado;}
+input [type = "checkbox"], input [type = "radio"] {box-sizing: border-box; padding: 0;}
+input [type = "search"] {- apariencia-webkit: campo de texto; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; tamaño-caja: content-box;}
+input [type = "search"] :: - webkit-search-cancel-button, input [type = "search"] :: - webkit-search-decoration {-webkit-apariencia: ninguno;}
+button :: - moz-focus-inner, input :: - moz-focus-inner {borde: 0; relleno: 0;}
+textarea {overflow: auto; vertical-align: top;}
+tabla {border-collapse: collapse; border-spacing: 0;}
+*, *: antes, *: después {-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+html {font-size: 62.5%; - webkit-tap-highlight-color: rgba (0, 0, 0, 0);}
+body {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.428571429; color: # 333333; background-color: #ffffff;}
+entrada, botón, seleccionar, área de texto {familia de fuentes: heredar; tamaño de fuente: heredar; altura de línea: heredar;}
+botón, entrada, seleccionar [múltiple], área de texto {background-image: none;}
+a {color: # 428bca; text-decoration: none;} a: hover, a: focus {color: # 2a6496; text-decoration: underline;}
+a: focus {contorno: punteado fino # 333; contorno: 5px auto -webkit-focus-ring-color; contorno-offset: -2px;}
+img {alineación vertical: centro;}
+.img-responsive {display: block; max-width: 100%; height: auto;}
+.img-redondeado {radio del borde: 6px;}
+.img-thumbnail {padding: 4px; line-height: 1.428571429; background-color: #ffffff; border: 1px solid #dddddd; border-radius: 4px; -webkit-transition: todos los 0.2s de fácil entrada y salida; transición : todos los 0,2 segundos de entrada y salida; pantalla: bloque en línea; ancho máximo: 100%; alto: automático;}
+.img-circle {radio del borde: 50%;}
+hr {margin-top: 20px; margin-bottom: 20px; border: 0; border-top: 1px solid #eeeeee;}
+.sr-only {posición: absoluta; ancho: 1px; alto: 1px; margen: -1px; relleno: 0; desbordamiento: oculto; clip: rect (0 0 0 0); borde: 0;}
+@ font-face {font-family: 'Glyphicons Halflings'; src: url ('../ fonts / glyphicons-halflings-regular.eot'); src: url ('../ fonts / glyphicons-medianos-regular. eot? #iefix ') formato (' embedded-opentype '), url (' ../ fonts / glyphicons-halflings-regular.woff ') formato (' woff '), url (' ../ fonts / glyphicons-halflings -regular.ttf ') formato (' truetype '), url (' ../ fonts / glyphicons-halflings-regular.svg # glyphicons-halflingsregular ') format (' svg ');}. glyphicon {posición: relativa; arriba : 1px; display: inline-block; font-family: 'Glyphicons Halflings'; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased;}
+.glyphicon-asterisk: before {content: "\ 2a";}
+.glyphicon-plus: antes de {content: "\ 2b";}
+.glyphicon-euro: antes de {content: "\ 20ac";}
+.glyphicon-minus: before {content: "\ 2212";}
+.glyphicon-cloud: before {content: "\ 2601";}
+.glyphicon-sobre: ​​antes de {content: "\ 2709";}
+.glyphicon-pencil: antes de {content: "\ 270f";}
+.glyphicon-glass: antes de {content: "\ e001";}
+.glyphicon-music: antes de {content: "\ e002";}
+.glyphicon-search: antes de {content: "\ e003";}
+.glyphicon-heart: before {content: "\ e005";}
+.glyphicon-star: antes de {content: "\ e006";}
+.glyphicon-star-empty: before {content: "\ e007";}
+.glyphicon-user: antes de {content: "\ e008";}
+.glyphicon-film: antes de {content: "\ e009";}
+.glyphicon-th-large: antes de {content: "\ e010";}
+.glyphicon-th: antes de {content: "\ e011";}
+.glyphicon-th-list: antes de {content: "\ e012";}
+.glyphicon-ok: antes de {content: "\ e013";}
+.glyphicon-remove: before {content: "\ e014";}
+.glyphicon-zoom-in: antes de {content: "\ e015";}
+.glyphicon-zoom-out: antes de {content: "\ e016";}
+.glyphicon-off: before {content: "\ e017";}
+.glyphicon-signal: before {content: "\ e018";}
+.glyphicon-cog: antes de {content: "\ e019";}
+.glyphicon-trash: before {content: "\ e020";}
+.glyphicon-home: before {content: "\ e021";}
+.glyphicon-file: antes de {content: "\ e022";}
+.glyphicon-time: before {content: "\ e023";}
+.glyphicon-road: before {content: "\ e024";}
+.glyphicon-download-alt: antes de {content: "\ e025";}
+.glyphicon-download: antes de {content: "\ e026";}
+.glyphicon-upload: antes de {content: "\ e027";}
+.glyphicon-inbox: before {content: "\ e028";}
+.glyphicon-play-circle: antes de {content: "\ e029";}
+.glyphicon-repeat: before {content: "\ e030";}
+.glyphicon-refresh: antes de {content: "\ e031";}
+.glyphicon-list-alt: antes de {content: "\ e032";}
+.glyphicon-flag: antes de {content: "\ e034";}
+.glyphicon-headset: antes de {content: "\ e035";}
+.glyphicon-volume-off: before {content: "\ e036";}
+.glyphicon-volume-down: antes de {content: "\ e037";}
+.glyphicon-volume-up: before {content: "\ e038";}
+.glyphicon-qrcode: before {content: "\ e039";}
+.glyphicon-barcode: antes de {content: "\ e040";}
+.glyphicon-tag: antes de {content: "\ e041";}
+.glyphicon-tags: antes de {content: "\ e042";}
+.glyphicon-book: antes de {content: "\ e043";}
+.glyphicon-print: antes de {content: "\ e045";}
+.glyphicon-font: antes de {content: "\ e047";}
+.glyphicon-bold: before {content: "\ e048";}
+.glyphicon-italic: antes de {content: "\ e049";}
+.glyphicon-text-height: before {content: "\ e050";}
+.glyphicon-text-width: antes de {content: "\ e051";}
+.glyphicon-align-left: antes de {content: "\ e052";}
+.glyphicon-align-center: antes de {content: "\ e053";}
+.glyphicon-align-right: antes de {content: "\ e054";}
+.glyphicon-align-justify: before {content: "\ e055";}
+.glyphicon-list: antes de {content: "\ e056";}
+.glyphicon-indent-left: antes de {content: "\ e057";}
+.glyphicon-indent-right: antes de {content: "\ e058";}
+.glyphicon-facetime-video: antes de {content: "\ e059";}
+.glyphicon-picture: before {content: "\ e060";}
+.glyphicon-map-marker: before {content: "\ e062";}
+.glyphicon-adjust: before {content: "\ e063";}
+.glyphicon-tint: antes de {content: "\ e064";}
+.glyphicon-edit: before {content: "\ e065";}
+.glyphicon-share: before {content: "\ e066";}
+.glyphicon-check: before {content: "\ e067";}
+.glyphicon-move: before {content: "\ e068";}
+.glyphicon-step-backward: before {content: "\ e069";}
+.glyphicon-fast-backward: before {content: "\ e070";}
+.glyphicon-backward: before {content: "\ e071";}
+.glyphicon-play: antes de {content: "\ e072";}
+.glyphicon-pause: antes de {content: "\ e073";}
+.glyphicon-stop: before {content: "\ e074";}
+.glyphicon-forward: before {content: "\ e075";}
+.glyphicon-fast-forward: before {content: "\ e076";}
+.glyphicon-step-forward: antes de {content: "\ e077";}
+.glyphicon-eject: before {content: "\ e078";}
+.glyphicon-chevron-left: before {content: "\ e079";}
+.glyphicon-chevron-right: before {content: "\ e080";}
+.glyphicon-plus-sign: before {content: "\ e081";}
+.glyphicon-minus-sign: before {content: "\ e082";}
+.glyphicon-remove-sign: before {content: "\ e083";}
+.glyphicon-ok-sign: antes de {content: "\ e084";}
+.glyphicon-question-sign: before {content: "\ e085";}
+.glyphicon-info-sign: antes de {content: "\ e086";}
+.glyphicon-screenshot: antes de {content: "\ e087";}
+.glyphicon-remove-circle: antes de {content: "\ e088";}
+.glyphicon-ok-circle: antes de {content: "\ e089";}
+.glyphicon-ban-circle: antes de {content: "\ e090";}
+.glyphicon-arrow-left: before {content: "\ e091";}
+.glyphicon-arrow-right: before {content: "\ e092";}
+.glyphicon-arrow-up: before {content: "\ e093";}
+.glyphicon-arrow-down: before {content: "\ e094";}
+.glyphicon-share-alt: antes de {content: "\ e095";}
+.glyphicon-resize-full: antes de {content: "\ e096";}
+.glyphicon-resize-small: before {content: "\ e097";}
+.glyphicon-exclamation-sign: before {content: "\ e101";}
+.glyphicon-gift: antes de {content: "\ e102";}
+.glyphicon-leaf: antes de {content: "\ e103";}
+.glyphicon-eye-open: before {content: "\ e105";}
+.glyphicon-eye-close: before {content: "\ e106";}
+.glyphicon-warning-sign: antes de {content: "\ e107";}
+.glyphicon-plane: before {content: "\ e108";}
+.glyphicon-random: before {content: "\ e110";}
+.glyphicon-comment: antes de {content: "\ e111";}
+.glyphicon-magnet: antes de {content: "\ e112";}
+.glyphicon-chevron-up: before {content: "\ e113";}
+.glyphicon-chevron-down: before {content: "\ e114";}
+.glyphicon-retweet: before {content: "\ e115";}
+.glyphicon-shopping-cart: antes de {content: "\ e116";}
+.glyphicon-folder-close: antes de {content: "\ e117";}
+.glyphicon-folder-open: before {content: "\ e118";}
+.glyphicon-resize-vertical: before {content: "\ e119";}
+.glyphicon-resize-horizontal: before {content: "\ e120";}
+.glyphicon-hdd: antes de {content: "\ e121";}
+.glyphicon-bullhorn: before {content: "\ e122";}
+.glyphicon-certificate: antes de {content: "\ e124";}
+.glyphicon-thumbs-up: before {content: "\ e125";}
+.glyphicon-thumbs-down: before {content: "\ e126";}
+.glyphicon-hand-right: before {content: "\ e127";}
+.glyphicon-hand-left: before {content: "\ e128";}
+.glyphicon-hand-up: before {content: "\ e129";}
+.glyphicon-hand-down: before {content: "\ e130";}
+.glyphicon-circle-arrow-right: before {content: "\ e131";}
+.glyphicon-circle-arrow-left: antes de {content: "\ e132";}
+.glyphicon-circle-arrow-up: before {content: "\ e133";}
+.glyphicon-circle-arrow-down: before {content: "\ e134";}
+.glyphicon-globe: antes de {content: "\ e135";}
+.glyphicon-tasks: before {content: "\ e137";}
+.glyphicon-filter: antes de {content: "\ e138";}
+.glyphicon-fullscreen: antes de {content: "\ e140";}
+.glyphicon-dashboard: before {content: "\ e141";}
+.glyphicon-heart-empty: before {content: "\ e143";}
+.glyphicon-link: antes de {content: "\ e144";}
+.glyphicon-phone: before {content: "\ e145";}
+.glyphicon-usd: before {content: "\ e148";}
+.glyphicon-gbp: antes de {content: "\ e149";}
+.glyphicon-sort: before {content: "\ e150";}
+.glyphicon-sort-by-alphabet: before {content: "\ e151";}
+.glyphicon-sort-by-alphabet-alt: before {content: "\ e152";}
+.glyphicon-sort-by-order: before {content: "\ e153";}
+.glyphicon-sort-by-order-alt: antes de {content: "\ e154";}
+.glyphicon-ordenar-por-atributos: antes de {contenido: "\ e155";}
+.glyphicon-sort-by-attribute-alt: before {content: "\ e156";}
+.glyphicon-unchecked: before {content: "\ e157";}
+.glyphicon-expand: before {content: "\ e158";}
+.glyphicon-collapse-down: before {content: "\ e159";}
+.glyphicon-collapse-up: before {content: "\ e160";}
+.glyphicon-log-in: antes de {content: "\ e161";}
+.glyphicon-flash: antes de {content: "\ e162";}
+.glyphicon-log-out: before {content: "\ e163";}
+.glyphicon-new-window: before {content: "\ e164";}
+.glyphicon-record: antes de {content: "\ e165";}
+.glyphicon-save: before {content: "\ e166";}
+.glyphicon-open: before {content: "\ e167";}
+.glyphicon-Saved: before {content: "\ e168";}
+.glyphicon-import: antes de {content: "\ e169";}
+.glyphicon-export: antes de {content: "\ e170";}
+.glyphicon-send: before {content: "\ e171";}
+.glyphicon-floppy-disk: antes de {content: "\ e172";}
+.glyphicon-floppy-Saved: before {content: "\ e173";}
+.glyphicon-floppy-remove: before {content: "\ e174";}
+.glyphicon-floppy-save: before {content: "\ e175";}
+.glyphicon-floppy-open: before {content: "\ e176";}
+.glyphicon-credit-card: before {content: "\ e177";}
+.glyphicon-transfer: before {content: "\ e178";}
+.glyphicon-cubiertos: antes de {contenido: "\ e179";}
+.glyphicon-header: antes de {content: "\ e180";}
+.glyphicon-compressed: antes de {content: "\ e181";}
+.glyphicon-earphone: antes de {content: "\ e182";}
+.glyphicon-phone-alt: antes de {content: "\ e183";}
+.glyphicon-tower: antes de {content: "\ e184";}
+.glyphicon-stats: antes de {content: "\ e185";}
+.glyphicon-sd-video: antes de {content: "\ e186";}
+.glyphicon-hd-video: antes de {content: "\ e187";}
+.glyphicon-subtitles: antes de {content: "\ e188";}
+.glyphicon-sound-stereo: antes de {content: "\ e189";}
+.glyphicon-sound-dolby: before {content: "\ e190";}
+.glyphicon-sound-5-1: antes de {content: "\ e191";}
+.glyphicon-sound-6-1: antes de {content: "\ e192";}
+.glyphicon-sound-7-1: antes de {content: "\ e193";}
+.glyphicon-copyright-mark: antes de {content: "\ e194";}
+.glyphicon-registration-mark: antes de {content: "\ e195";}
+.glyphicon-cloud-download: antes de {content: "\ e197";}
+.glyphicon-cloud-upload: antes de {content: "\ e198";}
+.glyphicon-tree-conifer: before {content: "\ e199";}
+.glyphicon-tree-deciduous: before {content: "\ e200";}
+.glyphicon-maletín: antes de {contenido: "\ 1f4bc";}
+.glyphicon-calendar: antes de {content: "\ 1f4c5";}
+.glyphicon-pushpin: before {content: "\ 1f4cc";}
+.glyphicon-paperclip: antes de {content: "\ 1f4ce";}
+.glyphicon-camera: antes de {content: "\ 1f4f7";}
+.glyphicon-lock: antes de {content: "\ 1f512";}
+.glyphicon-bell: antes de {content: "\ 1f514";}
+.glyphicon-bookmark: before {content: "\ 1f516";}
+.glyphicon-fire: before {content: "\ 1f525";}
+.glyphicon-wrench: before {content: "\ 1f527";}

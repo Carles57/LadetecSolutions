@@ -1,0 +1,66 @@
+body {
+
+    background: antiquewhite;
+    font-family: 'Times New Roman', Times, serif;
+    overflow: hidden;
+    width: 100%;
+}
+
+.index {
+    width: 100vw;
+    height: 100vh;
+}
+
+.flex-container{
+    display: flex;
+    justify-content:center;
+    justify-content:space-around;
+    flex-wrap:wrap;
+}
+
+.caja {
+    border: 1px solid rgb(70, 69, 69);
+    background-color: white;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    width: 260px;
+    height: 200px;
+    line-height: 300px;
+    text-align: center;
+    margin: 5px;
+}
+
+.cover {
+    color: white;
+    min-height: 30rem;
+   
+    padding-top:  8rem;
+    background: url('/images/descarga.jpg') ;
+    background-position: center, center;
+    background-repeat: no-repeat;
+    
+   
+    
+}
+
+.masthead {
+    color: white;
+    min-height: 30rem;
+   
+    background: url('/images/ladetec.jpg') ;
+    background-position: center, center;
+    background-repeat: no-repeat;
+    background-size: cover ;
+    max-width: 100%;
+    height: auto;
+   
+    
+}
+
+.iconpc {
+    background: url('/images/pc.png') ;
+    background-position: center, center;
+    background-repeat: no-repeat;
+    background-size: cover ;
+}

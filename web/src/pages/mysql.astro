@@ -1,0 +1,29 @@
+---
+import axios from 'axios';
+
+// Estado para almacenar los datos
+let data = [];
+let isLoading = true; // Estado para indicar si los datos están cargando
+
+// Realizar la solicitud HTTP al servidor de Node.js
+axios.get('http://localhost:3000/api/data')
+  .then(response => {
+    data = response.data; // Almacena los datos recibidos
+    isLoading = false; // Marca que la carga ha terminado
+  })
+  .catch(error => {
+    console.error('Error al obtener datos:', error);
+    isLoading = false; // Marca que la carga ha terminado (aunque haya error)
+  });
+---
+
+<!-- Mostrar los datos en el frontend -->
+{isLoading ? (
+  <p>Cargando datos de api/data...</p>
+) : (
+  <ul>
+    {data.map(item => (
+      <li>{item.username}</li>
+    ))}
+  </ul>
+)}

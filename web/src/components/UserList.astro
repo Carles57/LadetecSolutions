@@ -1,0 +1,54 @@
+---
+let users = [];
+let selectedUserId = null;
+
+// Función para obtener todos los usuarios
+async function fetchUsers() {
+  const response = await fetch('http://localhost:3000/links/get_all_users');
+  const data = await response.json();
+  return data;
+}
+
+// Función para obtener un usuario específico por ID
+async function fetchUserById(id) {
+  const response = await fetch(`http://localhost:3000/links/get_json/${id}`);
+  const data = await response.json();
+  return data;
+}
+
+// Obtener todos los usuarios al cargar el componente
+users = await fetchUsers();
+
+// Manejar la selección de un usuario
+function handleUserSelect(id) {
+  selectedUserId = id;
+}
+
+// Obtener el usuario seleccionado si hay uno
+let selectedUser = null;
+if (selectedUserId) {
+  selectedUser = await fetchUserById(selectedUserId);
+}
+---
+
+<!-- Mostrar la lista de usuarios -->
+<h2>Lista de usuarios</h2>
+<ul>
+  {users.map(user => (
+    <li key={user.id}>
+      <button onClick={() => handleUserSelect(user.id)}>
+        {user.username}
+      </button>
+    </li>
+  ))}
+</ul>
+
+<!-- Mostrar los detalles del usuario seleccionado -->
+{selectedUser ? (
+  <div>
+    <h2>Detalles del usuario seleccionado</h2>
+    <pre>{JSON.stringify(selectedUser, null, 2)}</pre>
+  </div>
+) : (
+  <p>Selecciona un usuario para ver sus detalles.</p>
+)}

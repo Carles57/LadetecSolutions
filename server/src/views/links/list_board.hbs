@@ -1,0 +1,27 @@
+<div class="container p-4">
+     <h2 class="card-title text-uppercase">
+         <div align="center"><strong>Listado de Boards Registradas</strong></div>
+    </h2>
+    <div class="row">
+        {{#each listado_board }}
+            <div class="col-md-3 ">
+              <div class="card text-center">
+                <div class="card-body">
+                       <h3 class="card-title text-uppercase">
+                           {{ desc_board }}
+                       </h3>
+                      <a href="/links/delete_board/{{id}}" class="btn btn-danger">Borrar entrada</a>
+                      <a href="/links/edit_board/{{id}}" class="btn btn-secondary">Editar</a>
+                </div>
+              </div> 
+            </div>  
+            {{else}} 
+            <div class="col-md-4 mx-auto">
+             <div class="card card-body text-center">
+                 <p>"No hay información"</p>
+                 <a href="/links/boards">Crea un Registro</a>
+             </div> 
+            </div>    
+        {{/each }}
+    </div>
+</div>

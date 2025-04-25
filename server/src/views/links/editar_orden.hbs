@@ -1,0 +1,68 @@
+<div class="container p-2">
+     
+       <div align="center"><h3>Empresa de Servicios Ingenieros Hidráulicos</h3></div>  
+         <div class="row">	     
+            <div class="col-md-12" align="center">
+              <h4>Editando orden del Usuario: <em>{{user.username}}</em></h4>
+            </div>           
+           
+         </div>   
+   <div class="container">
+       <form action= "/links/editar_orden/{{links.ID}}" method="POST">
+        <table class="table table-hover table-striped table-secondary text-center">
+         <thead class="bg-dark text-white">
+          <tr>
+           <th width="5%"><h5><div align="center">ID </div></h5></th>
+           <th width="15%"><h5><div align="center">Orden</div></h5></th>
+           <th width="40%"><h5><div align="left">Descripción</div></h5></th>
+           <th width="5%"><h5><div align="center">Bruta</div></h5></th>
+           <th width="10%"><h5><div align="left">Venta</div></h5></th>
+           <th width="10%"><h5><div align="left">Mes</div></h5></th>
+           <th width="10%"><h5><div align="left">Vendido</div></h5></th>
+           <th width="5%"><div align="center" class="form-group">
+           
+              <div align="center" class="form-group">
+                 <button class="btn btn-success btn-block">
+                      Save
+                 </button>
+               </div>
+            </th>
+          </tr>  
+        </thead>
+   
+       
+          <tr>
+             <td>
+                <div align="center" class="form-group">
+                    <label><h6>{{links.ID}}</h6></label></div>
+             </td>
+             <td> 
+                <div align="center" class="form-group">
+                    <label><h6>{{links.OrdenTrab}}</h6></label></div>
+             </td>
+             <td> 
+                <div align="left" class="form-group">
+                    
+                    <textarea name="Descripcion" calss="form-control">{{links.Descripcion}}</textarea>
+                </div>
+             </td>
+              <td> 
+                <div align="center" class="form-group"><label><h6>{{links.Vmensual}}</h6></label></div>
+             </td>
+             <td> 
+                <div align="center" class="form-group"><label><h6>{{links.vendido}}</h6></label></div>
+             </td>
+              <td> 
+                <div align="center" class="form-group"><label><h6>{{links.mes}}</h6></label></div>
+             </td>
+              <td> 
+                <div align="left" class="form-group"><label><h6>{{links.Terminada}}</h6></label></div>
+             </td>
+             
+          </tr>    
+          <input type= "hidden" name="c_consecutivo" value="{{links.consecutivo}}" 
+        </table>
+       </form>
+    
+ </div>
+</div>

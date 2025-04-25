@@ -1,0 +1,115 @@
+---
+let users = [];
+let selectedUserId = null;
+let filteredUsers = [];
+
+// Función para obtener todos los usuarios
+async function fetchUsers() {
+  const response = await fetch('http://localhost:3000/links/get_all_users');
+  const data = await response.json();
+  return data;
+}
+
+// Función para obtener un usuario específico por ID
+async function fetchUserById(id) {
+  const response = await fetch(`http://localhost:3000/links/get_json/${id}`);
+  const data = await response.json();
+  return data;
+}
+
+// Obtener todos los usuarios al cargar el componente
+users = await fetchUsers();
+
+// Función para actualizar filteredUsers basado en selectedUserId
+async function updateFilteredUsers() {
+  if (selectedUserId) {
+    const selectedUser = await fetchUserById(selectedUserId);
+    filteredUsers = selectedUser ? [selectedUser] : [];
+  } else {
+    filteredUsers = users;
+  }
+}
+
+// Inicializar filteredUsers
+updateFilteredUsers();
+
+// Manejar la selección de un usuario
+async function handleUserSelect(id) {
+  selectedUserId = id;
+  await updateFilteredUsers(); // Actualizar filteredUsers cuando se selecciona un usuario
+}
+
+// Manejar el botón de limpiar filtro
+function handleClearFilter() {
+  selectedUserId = null;
+  filteredUsers = users; // Restaurar la lista completa de usuarios
+}
+---
+
+<!-- Mostrar la tabla de usuarios -->
+<h2>Lista de usuarios</h2>
+<table border="1" style="width: 100%; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre de usuario</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {filteredUsers.map(user => (
+      <tr key={user.id}>
+        <td>{user.id}</td>
+        <td>{user.username}</td>
+        <td>
+          <button onClick={() => handleUserSelect(user.id)}>
+            Seleccionar
+          </button>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<!-- Botón para limpiar el filtro -->
+{selectedUserId && (
+  <div style="margin-top: 20px;">
+    <button onClick={handleClearFilter}>
+      Limpiar filtro
+    </button>
+  </div>
+)}
+
+<!-- Mostrar los detalles del usuario seleccionado -->
+{selectedUserId && filteredUsers.length > 0 && (
+  <div style="margin-top: 20px;">
+    <h2>Detalles del usuario seleccionado</h2>
+    <pre>{JSON.stringify(filteredUsers[0], null, 2)}</pre>
+  </div>
+)}
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>

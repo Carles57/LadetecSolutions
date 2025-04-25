@@ -1,0 +1,91 @@
+---
+ import Base from '../components/Base.astro';
+import UserLogin from '../components/n_newLogin.jsx';
+//import Footer from "../components/Footer.astro";
+import Container from"../components/Container.astro";
+import config from "../config/config.json";
+//import Header from "../components//Header.astro";
+---
+
+
+ <Base>
+  <section class="flex flex-col lg:flex-row min-h-screen">
+    <!-- Sidebar -->
+      <div id="sidebar" class="hidden lg:flex flex-col space-y-4 p-4 border border-white dark:border-gray-800 transition-all duration-300">
+        <a href="/" class="flex flex-col items-center lg:flex-row lg:space-x-2 hover:text-indigo-600 transition duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          <span class="hidden lg:inline">Inicio</span>
+        </a>
+
+        <a href="/ventas" class="flex flex-col items-center lg:flex-row lg:space-x-2 hover:text-indigo-600 transition duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <span class="hidden lg:inline">Ventas</span>
+        </a>
+
+        <a href="/almacen" class="flex flex-col items-center lg:flex-row lg:space-x-2 hover:text-indigo-600 transition duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          <span class="hidden lg:inline">Almacén</span>
+        </a>
+
+        <a href="/productos" class="flex flex-col items-center lg:flex-row lg:space-x-2 hover:text-indigo-600 transition duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16m-7 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3v-1m10 0h4" />
+          </svg>
+          <span class="hidden lg:inline">Productos</span>
+        </a>
+
+        <a href="/blog" class="flex flex-col items-center lg:flex-row lg:space-x-2 hover:text-indigo-600 transition duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+          </svg>
+          <span class="hidden lg:inline">Blog</span>
+        </a>
+
+        <a href="/contacto" class="flex flex-col items-center lg:flex-row lg:space-x-2 hover:text-indigo-600 transition duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <span class="hidden lg:inline">Contacto</span>
+        </a>
+
+        <a href="/usuarios" class="flex flex-col items-center lg:flex-row lg:space-x-2 hover:text-indigo-600 transition duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <span class="hidden lg:inline">Usuarios</span>
+        </a>
+      </div>
+
+
+    <!-- Contenido principal -->
+    <div class="flex-1 p-4">
+      <div class="relative flex flex-col items-center text-center lg:text-left lg:py-7 xl:py-8 lg:items-start lg:max-w-none max-w-3xl mx-auto lg:mx-0">
+        <h1 class="text-3xl/tight sm:text-4xl/tight md:text-5xl/tight xl:text-6xl/tight font-bold text-heading-1">
+        Sistema de Nómina 
+          <span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-primary via-30% to-green-600">Ladetec</span> Solutions.
+        </h1>
+      </div>
+
+      <div class="flex flex-1 lg:h-auto relative lg:max-w-none lg:mx-0 mx-auto max-w-3xl">
+        <UserLogin client:load />
+      </div>
+
+      <div class="flex flex-1 lg:h-auto relative lg:max-w-none lg:mx-0 mx-auto max-w-3xl">
+        <img src="/images/mercado.png" alt="Camaguey" width="2350" height="2359" class="lg:absolute lg:w-full lg:h-full rounded-3xl object-cover lg:max-h-none max-h-96">
+      </div>
+    </div>
+
+    
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white p-4 text-center">
+    <p>© 2023 Ladetec Solutions. Todos los derechos reservados.</p>
+  </footer>
+</Base>

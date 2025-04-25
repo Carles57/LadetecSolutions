@@ -1,0 +1,39 @@
+---
+import config from "../config/config.json";
+//import { plainify } from "@/lib/utils/textConverter";
+import { ClientRouter,fade,slide } from "astro:transitions";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+//import Header from "../components/Menu.jsx";
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- favicon -->
+    <link rel="shortcut icon" href={config.site.favicon} />
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <!-- responsive meta -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=5"
+    />
+
+    <!-- title 
+    <title>
+      {plainify(meta_title ? meta_title : title ? title : config.site.title)}
+    </title>   
+    -->
+  </head>
+   <body transition:animate="none">
+  
+    <Header />
+    
+    <main id="main-content" transition:animate="slide">
+      <slot />
+    </main>
+    <Footer />
+   
+  </body>
+</html>  

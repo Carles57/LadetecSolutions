@@ -1,0 +1,357 @@
+
+<div class="container p-2">
+             
+  
+ <form action= "/links/generar_pdf/{{links.id_inventario}}" method="POST">
+ <table width="85%">
+      <tr>
+          <td width="20%"><h5><div align="center">Generar PDF del </div></h5></td>
+          <td width="20%"><h5><div align="center">Trabajador</div></h5></td>
+          <td width="40%">
+              <div align="center">
+                <input type="text" class="form-control-yo" name="nombre_trabajador" value="{{links.nombre}}">
+              </div>
+          </td>
+          <td width="20%"> <div align="center" class="form-group">
+                   <button class="btn btn-success btn-block">
+                      PDF
+                   </button>
+                  </div>
+          </td>
+      </tr>  
+ </table>
+    <table class="table-responsive table td" width="100%">
+     <tr>   
+      <td>   
+        <!-- Tabla Interior -->  
+       <table class="table table-bordered" width="20%">
+        <tr>   
+          <td>   
+             <div class="form-group" style="background-color:antiquewhite;">
+               <div align="center" >
+                  <img src="/images/pc.png" width="30" height="30" alt="">
+                 <label style="color: darkblue; " class="control-label"><h6><strong>PC en la Red</strong></h6></label>
+               </div>
+                  <div class="input-group"> 
+                     <input class="form-control" id="inventario" type="text" value="{{links.machine_name}}" 
+                            name="machine_name" required />
+                  </div>
+              </div>
+            </td> 
+          </tr>  
+        
+           <tr>  
+             <td  >
+                    <div class="form-group" style="background-color:antiquewhite;">
+                    <div align="center">
+                     <label class="control-label">Inventario</label>
+                     </div>
+                     <div class="input-group"> 
+                       <input class="form-control" id="pc" type="text" value="{{links.inv_pc}}" 
+                            name="inv_pc" required />
+                     </div>
+                  </div>
+             </td>    
+          </tr>   
+          
+          <tr>  
+           <td   >
+                <div class="form-group" style="background-color:antiquewhite;">
+                <div align="center">
+                    <img src="/images/board.png" width="30" height="30" alt="">
+                 <label class="control-label">Board de la PC</label>
+                </div>
+                     <input class="form-control" name="desc_board" value="{{links.desc_board}}" >
+              </div>
+          </td>    
+          </tr>  
+            
+          <tr>
+              <td>
+                   <div class="form-group" style="background-color:antiquewhite;">
+                    <div align="center">
+                     <label class="control-label">Modelo</label>
+                    </div> 
+                     <div class="input-group"> 
+                       <input class="form-control" id="modelo" type="text" value="{{links.system_model}}" 
+                            name="system_model" required />
+                     </div>
+                  </div>
+              </td>
+          </tr> 
+          
+          <tr>
+              <td>
+                    <div class="form-group" style="background-color:antiquewhite">
+                    <div align="center">
+                        <img src="/images/ram.png" width="30" height="30" alt="">
+                     <label class="control-label">Memoria</label>
+                    </div> 
+                     <div class="input-group"> 
+                       <input class="form-control" id="memoria" value="8975" type="number" value="{{links.memory}}" 
+                            name="memory" required/>
+                     </div>
+                  </div>
+              </td>
+          </tr> 
+         
+           <tr>
+              <td>
+                    <div class="form-group" style="background-color:antiquewhite;">
+                     
+                    <div align="center">
+                        <img src="/images/procesador.png" width="30" height="30" alt="">
+                     <label class="control-label">Procesador</label>
+                    </div>
+                     <div class="input-group"> 
+                       <input class="form-control" id="procesador" type="text" value="{{links.procesador}}" 
+                            name="procesador" required    />
+                     </div>
+                  </div>
+                   
+        </td>
+     </tr> 
+      </table>
+      </td> <!-- Fin de Tabla Interior --> 
+       <td> 
+           <table class="table table-bordered" width="20%" >
+             <tr style="border-width: medium;">
+                 <td>
+                     <div align="center" class="form-group" style="background-color:antiquewhite;">
+                    <img src="/images/monitor.png" width="30" height="30" alt="">
+                     <label style="color: darkblue;"  class="control-label"><h6><strong>Monitor</strong></h6></label>
+                     <div class="input-group"> 
+                       <input class="form-control" id="inv_monitor" type="text" value="{{links.inv_monitor}}"
+                            name="inv_monitor"  required   />
+                     </div>
+                  </div>
+                 </td>
+             </tr>
+              <tr>
+                 <td>
+                    <div align="center" class="form-group" style="background-color:antiquewhite;">
+                     <label  class="control-label">Marca Monitor</label>
+                    
+                           <input class="form-control" name="desc_monitor" value="{{links.desc_monitor}}" >
+                      
+                  </div>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                   <div align="center" class="form-group">
+                     <label  class="control-label">Tipo Monitor</label>
+                      
+                           <input class="form-control" name="i_tipo_monitor" value="{{links.desc_tipo_monitor}}" >
+                      
+                  </div>
+                 </td>
+             </tr>
+              <tr>
+                 <td>
+                    <div align="center" class="form-group" style="background-color:antiquewhite;">
+                       <img src="/images/teclado.png" width="40" height="40" alt="">
+                     <label style="color: darkblue;" class="control-label"><h6><strong>Teclado Inventario</strong></h6></label>
+                     <div align="center" class="input-group"> 
+                       <input class="form-control" id="inv_teclado" type="text" value="{{links.inv_teclado}}" 
+                            name="inv_teclado" required   />
+                     </div>
+                  </div>
+                 </td>
+             </tr>
+              <tr>
+                 <td>
+                     <div align="center" class="form-group" style="background-color:antiquewhite;">
+                     <label class="control-label">Teclado Tipo</label>
+                    
+                              <input class="form-control" name="desc_teclado" value="{{links.desc_teclado}}" >
+                  
+                  </div>
+                 </td>
+                 
+             </tr>
+              
+           </table>
+         </td>
+         <td>
+             <table class="table table-bordered table-borderless" width="20%" >
+             <tr>
+               <td>
+           <table class="table table-bordered" width="50%" >
+             <tr style="border-width: medium;">
+                 <td>
+                   <div align="center" class="form-group" style="background-color:antiquewhite;">
+                         <img src="/images/ups.png" width="30" height="30" alt="">
+                     <label style="color: darkblue;"  class="control-label"><h6><strong>UPS Inventario</strong></h6></label>
+                     <div class="input-group"> 
+                       <input class="form-control" id="inv_ups" type="text" value="{{links.inv_ups}}"
+                            name="inv_ups" required   />
+                     </div>
+                  </div>
+                 </td>
+             </tr>
+              <tr>
+                 <td>
+                    <div align="center" class="form-group" style="background-color:antiquewhite;">
+                     <label  class="control-label">Marca UPS</label>
+                   
+                                  <input class="form-control" name="desc_ups" value="{{links.desc_ups}}" >
+                         
+                  </div>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                    <div align="center" class="form-group" style="background-color:antiquewhite;">
+                       <img src="/images/spikers1.png" width="30" height="30" alt="">
+                     <label style="color: darkblue;" class="control-label"><h6><strong>Spiker Inventario</strong></h6></label>
+                     <div class="input-group"> 
+                       <input class="form-control" id="inv_spiker" type="text" value="{{links.inv_spiker}}" 
+                            name="inv_spiker" required   />
+                     </div>
+                  </div>
+                 </td>
+             </tr>
+              <tr>
+                 <td>
+                                       
+                     <div align="center" class="form-group" style="background-color:antiquewhite;">
+                     <label   class="control-label"><strong>Marca Spiker</strong></label>
+                    
+                         <input class="form-control" name="desc_spiker" value="{{links.desc_spiker}}" > 
+                     
+                  </div>
+                 </td>
+             </tr>
+              <tr>
+                 <td>
+                     <table>
+                         <tr>
+                             <td>
+                     <div align="center" class="form-group" style="background-color:antiquewhite;">
+                          <img src="/images/impresora.png" width="20" height="20" alt="">
+                     <label style="color: darkblue;" class="control-label"><h6><strong>Impresora Inventario</strong></h6></label>
+                     <div class="input-group"> 
+                       <input class="form-control" id="inv_impresora" type="text" value="{{links.inv_impresora}}" 
+                            name="inv_impresora" required/>
+                     </div>
+                  </div>
+                  </td>
+                  <td>
+                  
+                   <div align="center" class="form-group">
+                       
+                     <label  class="control-label">Tipo Impresora</label>
+                     <div class="input-group"> 
+                        <input class="form-control" id="inv_impresora" type="text" value="{{links.desc_impresora}}" 
+                            name="desc_impresora" required/>
+                     </div>
+                  </div>
+                 </td>
+                  </tr>
+                  </table>
+                 </td>
+             </tr>
+              <tr>
+                 <td>
+                     <div align="center" class="form-group" style="background-color:antiquewhite;">
+                     <label  class="control-label">Marca Impresora</label>
+                    
+                              <input class="form-control" name="tipo_desc_impresora" value="{{links.desc_impresora}}" >
+                      
+                  </div>
+                 </td>
+             </tr>
+           </table>
+               </td>
+                <td> 
+           <table class="table table-bordered table-borderless" width="40%" >
+             <tr>
+                  <td>
+           <table class="table table-bordered" width="50%" >
+             <tr style="border-width: medium;">
+                 <td>
+                    <div align="center" class="form-group" style="background-color:antiquewhite;">
+                       <img src="/images/scaner1.png" width="30" height="30" alt="">
+                     <label style="color: darkblue;" class="control-label"><h6><strong>Scaner Inventario</strong></h6></label>
+                     <div class="input-group"> 
+                       <input class="form-control" id="inv_sca" type="text" value="{{links.inv_scaner}}" 
+                            name="inv_scaner" required   />
+                     </div>
+                  </div>
+                 </td>
+             </tr>
+              <tr>
+                 <td>
+                    <div  align="center"class="form-group" style="background-color:antiquewhite;">
+                    <label  class="control-label">Marca Scaner</label>
+                   
+                             <input class="form-control" name="desc_marca_scaner" value="{{links.desc_scaner}}" >    
+                       
+                  </div>
+                 </td>
+             </tr>
+            
+              <tr>
+                 <td>
+                     <div align="center" class="form-group" style="background-color:antiquewhite;">
+                          <img src="/images/ploter2.png" width="30" height="30" alt="">
+                     <label style="color: darkblue;"  class="control-label"><h6><strong>Plotter Inventario</strong></h6></label>
+                     <div align="center" class="input-group"> 
+                       <input class="form-control" id="inv_ploter" type="text" value="{{links.inv_plotter}}"
+                            name="inv_plotter" required/>
+                     </div>
+                  </div>
+                 </td>
+             </tr>
+              <tr>
+                 <td>
+                   <div align="center" align="center" class="form-group">
+                     <label  class="control-label">Marca Plotter</label>
+                     <div class="input-group"> 
+                         <input class="form-control" id="inv_ploter" type="text" value="{{links.desc_plotter}}"
+                            name="desc_plotter" required/>   
+                      
+                     </div>
+                  </div>
+                 </td>
+             </tr>
+             <tr>
+               <td>
+
+               </td>
+             </tr>
+             
+             <tr>
+                 <td>
+                   <div align="center" class="form-group" style="background-color:antiquewhite;">
+                      <div align="center"> 
+                      <img src="/images/mouse.png" width="30" height="30" alt="">
+                     <label style="color: darkblue;"  class="control-label"><h6><strong>Mouse Inventario</strong></h6></label>
+                     </div>
+                     <div class="input-group"> 
+                       <input class="form-control" id="inv_mouse" type="text" value="{{links.inv_mouse}}" 
+                            name="inv_mouse" required   />
+                     </div>
+                  </div>
+                 </td>
+             </tr>
+             <tr>
+                  <td>
+                 
+                 </td>
+             </tr>
+           </table>
+            </td>
+             </tr>
+           </table>
+         </td>
+             </tr>
+    </table>
+ 
+
+
+    
+</form>
+  </div>
+ 

@@ -1,0 +1,171 @@
+---
+//import Logo from "@/components/Logo.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
+import config from "../config/config.json";
+import menu from "../config/menu.json";
+
+export interface ChildNavigationLink {
+  name: string;
+  url: string;
+}
+
+export interface NavigationLink {
+  name: string;
+  url: string;
+  hasChildren?: boolean;
+  children?: ChildNavigationLink[];
+}
+
+const { main }: { main: NavigationLink[] } = menu;
+const { navigation_button, settings } = config;
+const { pathname } = Astro.url;
+---
+
+<header class={`z-30 ${settings.sticky_header && "sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm"}`}>
+  <nav class="navbar container mx-auto px-2 py-2 flex items-center justify-between">
+    <!-- logo -->
+    <div class="flex-shrink-0">
+      <a href="https://Ladetec.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="/images/ladetec3preview.png" class="h-8" alt="Ladetec Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-lora">Solutions</span>
+        </a>
+    </div>
+
+    <!-- navbar toggler -->
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="lg:hidden text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
+    >
+      <svg id="show-button" class="h-6 w-6 fill-current block" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M3 5h18v2H3V5zm0 6h18v2H3v-2zm0 6h18v2H3v-2z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 w-6 fill-current hidden" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path>
+      </svg>
+    </label>
+    <!-- /navbar toggler -->
+
+    <ul
+  id="nav-menu"
+  class="navbar-nav hidden lg:flex lg:items-center lg:space-x-6 font-lora"  // Añadido font-lora aquí
+>
+  {main.map((menu) => (
+    <>
+      {menu.hasChildren ? (
+        <li class="nav-item nav-dropdown group relative">
+          <span
+            class={`nav-link inline-flex items-center text-2xl text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors py-2 ${
+              menu.children?.map(({ url }) => url).includes(pathname) ||
+              menu.children
+                ?.map(({ url }) => `${url}/`)
+                .includes(pathname)
+                ? "text-primary dark:text-primary"
+                : ""
+            }`}
+          >
+            {menu.name}
+            <svg class="h-4 w-4 fill-current ml-1" viewBox="0 0 20 20">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+            </svg>
+          </span>
+          <ul class="nav-dropdown-list hidden lg:absolute lg:left-0 lg:mt-1 lg:min-w-[200px] lg:rounded-md lg:bg-white lg:shadow-lg dark:lg:bg-gray-800 lg:py-1 lg:group-hover:block border border-gray-100 dark:border-gray-700">
+            {menu.children?.map((child) => (
+              <li class="nav-dropdown-item">
+                <a
+                  href={child.url}
+                  class={`block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
+                    (pathname === `${child.url}/` ||
+                      pathname === child.url) &&
+                    "text-primary dark:text-primary"
+                  }`}
+                >
+                  <div class="flex items-center">
+                    <svg class="h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                    {child.name}
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ) : (
+        <li class="nav-item">
+          <a
+            href={menu.url}
+            class={`nav-link block text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors py-2 ${
+              (pathname === `${menu.url}/` || pathname === menu.url) &&
+              "text-primary dark:text-primary"
+            }`}
+          >
+            {menu.name}
+          </a>
+        </li>
+      )}
+    </>
+  ))}
+  {navigation_button.enable && (
+    <li class="mt-2 inline-block lg:hidden">
+      <a
+        class="btn btn-outline-primary btn-sm font-lora"  // Añadido font-lora aquí
+        href={navigation_button.link}
+      >
+        {navigation_button.label}
+      </a>
+    </li>
+  )}
+</ul>
+
+    <div class="order-1 ml-auto flex items-center space-x-4 md:order-2 lg:ml-0">
+      <ThemeSwitcher className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" />
+      {
+        navigation_button.enable && (
+          <a
+            class="hidden lg:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark transition-colors"
+            href={navigation_button.link}
+          >
+            {navigation_button.label}
+          </a>
+        )
+      }
+    </div>
+  </nav>
+</header>
+
+<style is:global>
+  /* Estilos para el menú móvil */
+  #nav-toggle:checked ~ #nav-menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+  }
+
+  .dark #nav-toggle:checked ~ #nav-menu {
+    background: #1a202c;
+  }
+
+  #nav-toggle:checked ~ label #show-button {
+    display: none;
+  }
+
+  #nav-toggle:checked ~ label #hide-button {
+    display: block;
+  }
+
+  /* Mejoras para el dropdown */
+  .nav-dropdown:hover .nav-dropdown-list {
+    display: block;
+  }
+
+  .nav-dropdown-list {
+    transition: all 0.2s ease-out;
+  }
+</style>

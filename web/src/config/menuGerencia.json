@@ -1,0 +1,69 @@
+{
+    "main": [
+      {
+        "name": "Inicio",
+        "url": "/"
+      },
+      {
+        "name": "BD",
+        "url": "",
+        "hasChildren": true,
+        "children": [
+          {
+            "name": "Metodos de Pago",
+            "url": "/MethodsPaymentCrud"
+          },
+          {
+            "name": "Tasas de Cambio",
+            "url": "/SetTasas"
+           
+          },
+          {
+            "name": "Clientes",
+            "url": "/clientes"
+          }
+        ]
+      },
+      {
+        "name": "Administración",
+        "url": "",
+        "hasChildren": true,
+        "children": [
+          {
+            "name": "Usuarios",
+            "url": "/AllUsers"
+          },
+          {
+            "name": "Empleados",
+            "url": "/AllEmployee"
+           
+          },
+          {
+            "name": "Clientes",
+            "url": "/clientes"
+          },
+          {
+            "name": "Reporte de Tiempo",
+            "url": "/AllTimeEmployee"
+          },
+        
+          {
+            "name": "Procesar el Pago",
+            "url": "/process_payment"
+          }
+        
+        ]
+      }
+      
+    ],
+    "footer": [
+      {
+        "name": "Ayuda",
+        "url": "/ayuda"
+      },
+      {
+        "name": "Contacto",
+        "url": "/privacy-policy"
+      }
+    ]
+  }

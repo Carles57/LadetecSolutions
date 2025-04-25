@@ -1,0 +1,29 @@
+---
+ 
+ import EmployeeTimes from '../components/timesOfWorkNew.jsx';
+import Base from "../components/BaseGerencia.astro";
+import Sidebar from "../components/sidebarAdmin.astro";
+import Container from"../components/Container.astro";
+export const prerender = true;
+---
+
+<Base>
+  <section class="flex flex-col lg:flex-row min-h-screen">
+    <Container className={"flex flex-col lg:flex-row gap-10 lg:gap-10"}>
+      <!-- Sidebar -->
+      <Sidebar />
+
+      <div class="relative flex flex-col items-center text-center lg:text-left lg:py-7 xl:py-8 lg:items-start
+                  lg:max-w-none max-w-5xl mx-auto lg:mx-0 lg:flex-1 lg:w-1/2">
+         
+            <EmployeeTimes client:load />
+      </div>
+    </Container>
+  </section>
+  {/* Aquí envolvemos el contenido dinámico con el UserProvider 
+    <UserProvider>
+      <ReactApp />
+    </UserProvider> */}
+   
+ 
+</Base>

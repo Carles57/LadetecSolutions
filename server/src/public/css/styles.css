@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prueba: Fuerza a generar una clase */
+.bg-test {
+    background-color: red;
+  }

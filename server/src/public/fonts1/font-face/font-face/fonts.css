@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('fonts/opensans-regular.woff2') format('woff2'),
+    url('fonts/opensans-regular.woff') format('woff');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('fonts/opensans-bold.woff2') format('woff2'),
+    url('fonts/opensans-bold.woff') format('woff');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('fonts/opensans-light.woff2') format('woff2'),
+    url('fonts/opensans-light.woff') format('woff');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Lobster';
+  src: url('fonts/lobster-regular.woff2') format('woff2'),
+    url('fonts/lobster-regular.woff') format('woff');
+  font-style: normal;
+  font-weight: normal;
+}
+
+section { font-family: 'Open Sans', sans-serif; }
+section strong { font-weight: bold; }
+section a { font-weight: lighter; }
+section h2 { font-family: Lobster; }
+section em { font-family: Lobster; color: #999; }
