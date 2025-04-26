@@ -1,2 +1,53 @@
+<nav class="navbar  navbar-expand-lg navbar-dark bg-primary" id="navbar" style="background-color: #e3f2fd;">
+  <div class="container">
+        <a class="navbar-brand" href="/links">
+          <img src="/images/ladetec.jpg" width="80" height="50" alt="" class="card-img-top mx-auto m-2 rounded-circle w-10">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+             {{#if user}}
 
-<div>En Construcción</div>
+             
+          
+         <li class="nav-item">
+              <a href="/links/cambiar_fecha" id="cambiar_fecha" class="nav-link">Fecha</a>
+         </li>
+            <li id="nav-item dropdown" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Comenzamos
+              </a>
+                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                 
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/Administracion">Gerente</a>
+                    <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/Contador">Contador</a>
+                    <div class="dropdown-divider"></div>  
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="/profile" class="nav-link">Tu Perfil</a>
+            </li>
+           <li class="nav-item">
+              <a href="/logout" id="cerrar" class="nav-link">Cerrar</a>
+            </li>
+             {{else}}
+               <li class="nav-item">
+                  <a href="/signin" class="nav-link">Loguéate</a>
+               </li>
+               <li class="nav-item">
+                  <a href="/signup" class="nav-link">Regístrate</a>
+               </li>
+             {{/if}}
+          </ul>
+        </div>
+ </div>
+</nav>
+
