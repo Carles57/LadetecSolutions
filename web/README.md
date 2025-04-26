@@ -1,10 +1,10 @@
-c# Ladetec en Astro 
+## Ladetec en Astro 
 
 ```sh
 npm create astro@latest -- --template blog
 ```
 
-Features:
+### Features:
 
 - ✅ Minimal styling (make it your own!)
 - ✅ 100/100 Lighthouse performance
@@ -13,7 +13,7 @@ Features:
 - ✅ RSS Feed support
 - ✅ Markdown & MDX support
 
-## 🚀 Estructura
+### 🚀 Estructura
 
 ```text
 ├── public/
@@ -44,4 +44,4 @@ Features:
 Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 ## Credit
 Ladetec: Luque
-Agradecimientos por el tema https://github.com/HermanMartinus/bearblog/
+Con Agradecimientos por el tema https://github.com/HermanMartinus/bearblog/
